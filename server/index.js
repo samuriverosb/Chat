@@ -16,6 +16,8 @@ const io = new SocketServer(server, {
   }
 })
 
+app.use(express.static(join(__dirname, '../client/dist')))
+
 app.use(cors())
 app.use(morgan('dev'))
 
@@ -27,8 +29,6 @@ io.on('connection', (socket) => {
     })
   })
 })
-
-app.use(express.static(join(__dirname, '../client/dist')))
 
 server.listen(PORT);
 console.log("Server listening on port", PORT);
